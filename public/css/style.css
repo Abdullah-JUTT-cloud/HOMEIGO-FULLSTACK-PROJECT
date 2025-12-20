@@ -31,38 +31,7 @@ body {
  .nav-link{
     color:#222222 !important ;
  }
- .f-info-links a{
-    text-decoration: none;
-    color: #222222;
- }
- .f-info-links a:hover{
-    text-decoration: underline;
- }
- .f-info-links,.f-info-socials,.f-info-brand{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   
- }
-
- .f-info-socials i{
-     font-size: 1.2rem;
-        margin-right: 1rem;
- }
- .f-info{
-    height: 8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top: 1px solid #ddd;
-    flex-wrap: wrap;
-    background-color: #ebebeb;
-    text-align: center;
-    
- }
-
- .card{
+  .card{
     border: none !important;
     margin-bottom: 2rem;
  }
@@ -90,6 +59,44 @@ opacity: 0;
 
  }
  .btn-add{
-   background-color: FF385C;
+   background-color: #FF385C !important;
    border: none !important;
+ }
+ .f-info-links a{
+    text-decoration: none;
+    color: #222222;
+ }
+ .f-info-links a:hover{
+    text-decoration: underline;
+ }
+ .f-info-links,.f-info-socials,.f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+ }
+
+ .f-info-socials i{
+     font-size: 1.2rem;
+        margin-right: 1rem;
+ }
+footer {
+    margin-top: auto;
+}
+
+ .f-info{
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #ddd;
+    flex-wrap: wrap;
+    background-color: #ebebeb;
+    text-align: center;
+
+ }
+ .position{
+   position: absolute;
+   bottom: 0px;
  }
