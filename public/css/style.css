@@ -100,3 +100,52 @@ footer {
    position: absolute;
    bottom: 0px;
  }
+
+ .show-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;  /* adds space from navbar and top */
+}
+.show-card {
+  width: 60vw;
+  height: 60vh;  
+  max-width: 1100px;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  
+  display: flex;
+  flex-direction: column;
+}
+.show-page h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .show-card {
+    width: 90vw;
+    height: auto;  
+  }
+}
+
+.show-actions {
+  display: flex;       
+  gap: 1rem;           
+  margin-top: auto;    
+  justify-content: flex-start; 
+  flex-wrap: wrap;     
+}
+
+.show-actions form {
+  margin: 0;            
+}
+.show-actions {
+  justify-content: center;
+}
+ .show-img{
+   height: 50vh;
+   width: 50vw;
+ }
+
