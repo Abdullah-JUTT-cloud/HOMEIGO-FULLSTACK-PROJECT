@@ -91,5 +91,5 @@ opacity: 0;
  }
  .btn-add{
    background-color: FF385C;
-   border: none;
+   border: none !important;
  }
