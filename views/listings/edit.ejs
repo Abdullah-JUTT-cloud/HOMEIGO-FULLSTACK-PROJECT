@@ -22,13 +22,8 @@
         </div>
         <div class="mb-3">
           <label for="image" class="form-label">Enter URL/Link:</label>
-          <input
-            type="text"
-            name="listing[image]"
-            value="<%= listing.image.url %>"
-            class="form-control"
-          />
-        </div>
+         <input type="text" class="form-control" name="listing[image][url]" value="<%= listing && listing.image ? listing.image.url : '' %>" />
+
         <div class="row">
           <div class="mb-3 col-md-4">
             <label for="price" class="form-label">Enter Price:</label>
@@ -50,7 +45,7 @@
           </div>
         </div>
         <div class="mb-3">
-          <label for="location" class="form-label">Enter Country:</label>
+          <label for="location" class="form-label">Enter Location:</label>
           <input
             type="text"
             name="listing[location]"
