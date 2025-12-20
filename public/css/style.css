@@ -12,9 +12,9 @@ body {
          display: flex;
          flex-direction: column;
 }
- .container{
+ /* .container{
    flex: 1;
- }
+ } */
 
 .navbar{
     height: 5rem;
