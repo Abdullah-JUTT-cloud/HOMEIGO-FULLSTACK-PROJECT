@@ -1,0 +1,38 @@
+<!-- <% layout("./layouts/boilerplate.ejs") %>
+<div class="row mt-3">
+    <div class="alert alert-danger col-6 offset-3" role="alert">
+ <h3 class="alert-heading"><%= err.message %></h3>
+
+</div>
+</div> -->
+
+<% layout("./layouts/boilerplate.ejs") %>
+
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 70vh;">
+  <div class="col-md-8 col-lg-6">
+    <div class="card shadow-lg border-0 text-center p-4">
+
+      <h1 class="display-1 text-danger fw-bold">
+        <%= err.statusCode || 500 %>
+      </h1>
+
+      <h4 class="mb-3">
+        <%= err.message || "Something went wrong" %>
+      </h4>
+
+      <p class="text-muted mb-4">
+        The page you’re trying to access doesn’t exist or an unexpected error occurred.
+      </p>
+
+      <div class="d-flex justify-content-center gap-3">
+        <a href="/listings" class="btn btn-danger">
+          Back to Listings
+        </a>
+        <a href="/" class="btn btn-outline-secondary">
+          Home
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
