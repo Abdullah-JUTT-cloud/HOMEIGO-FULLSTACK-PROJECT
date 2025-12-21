@@ -1,12 +1,10 @@
 <% layout("./layouts/boilerplate.ejs") %>
 <body>
-    
-  <form action="/listings" method="post">
+  <form action="/listings" method="post" novalidate class="needs-validation">
     <div class="row">
-       
       <div class="col-8 offset-2">
-         <br><br>
-          <h2>Create a New Listing</h2>
+        <br /><br />
+        <h2>Create a New Listing</h2>
         <div class="mb-3">
           <label for="title" class="form-label">Enter Title:</label>
           <input
@@ -14,7 +12,10 @@
             name="listing[title]"
             placeholder="Enter Title Of Place"
             class="form-control"
+            required
           />
+          <div class="valid-feedback">Title is Fine!</div>
+           <div class="invalid-feedback">Ttile is not valid!</div>
         </div>
 
         <div class="mb-3">
@@ -24,7 +25,9 @@
             placeholder="Enter description about  the place you are listing"
             class="form-control"
             id=""
+            required
           ></textarea>
+          <div class="invalid-feedback">Descripton is not valid!</div>
         </div>
 
         <div class="mb-3">
@@ -36,42 +39,44 @@
             class="form-control"
           />
         </div>
-            <div class="row">
-                <div class="mb-3 col-md-4">
-          <label for="price" class="form-label">Enter Price:</label>
-          <input
-            type="number"
-            name="listing[price]"
-            placeholder="Enter price Of Place"
-            class="form-control"
-          />
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Enter Price:</label>
+            <input
+              type="number"
+              name="listing[price]"
+              placeholder="Enter price Of Place"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Price is not valid!</div>
+          </div>
+
+          <div class="mb-3 col-md-8">
+            <label for="country" class="form-label">Enter Country:</label>
+            <input
+              type="text"
+              name="listing[country]"
+              placeholder="Enter country Of Place"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Country name is not valid!</div>
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Enter Location:</label>
+            <input
+              type="text"
+              name="listing[location]"
+              placeholder="Enter location Of Place"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Location is not valid!</div>
+          </div>
         </div>
 
-        <div class="mb-3 col-md-8">
-          <label for="country" class="form-label">Enter Country:</label>
-          <input
-            type="text"
-            name="listing[country]"
-            placeholder="Enter country Of Place"
-            class="form-control"
-          />
-        </div>
-            </div>
-        
-
-        <div class="mb-3">
-          <label for="location" class="form-label">Enter Location:</label>
-          <input
-            type="text"
-            name="listing[location]"
-            placeholder="Enter location Of Place"
-            class="form-control"
-          />
-        </div>
-
-        
         <button class="btn btn-dark btn-add mt-3">List place</button>
-       
       </div>
     </div>
   </form>
