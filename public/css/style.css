@@ -148,6 +148,7 @@ footer {
    height: 50vh;
    width: 50vw;
  }
-.black{
-   color: #222222;
+.review-card{
+border: 1px solid black !important;
+/* margin-left: 1rem; */
 }

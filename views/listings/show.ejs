@@ -34,15 +34,29 @@
         </form>
       </div>
     </div>
+    <br>
+    <hr>
   </div>
+  
 </main>
-<div class="col-8 offset-1 mb-3">
+<div class="col-8 offset-2 mb-3">
   <h3 class="mb-3">Leave a rating:</h3>
-  <form action="/listings/<%= listing._id %>/reviews" method="post">
+  <form
+    action="/listings/<%= listing._id %>/reviews"
+    method="post"
+    novalidate
+    class="needs-validation"
+  >
     <div class="mb-3">
       <label for="rating" class="form-label" id="rating">Rating</label>
-      <input type="range" class="form-range" min="1" max="5" id="rating" name="review[rating]" />
-      
+      <input
+        type="range"
+        class="form-range"
+        min="1"
+        max="5"
+        id="rating"
+        name="review[rating]"
+      />
     </div>
     <div class="mb-3">
       <label class="form-label" for="comment" id="comment">Comments</label>
@@ -50,11 +64,32 @@
         name="review[comment]"
         id="comment"
         class="form-control"
+        required
       ></textarea>
+      <div class="invalid-feedback">Please enter a comment for review</div>
     </div>
     <button class="btn btn-outline-dark mt-2">Submit</button>
   </form>
+   <br />
+  <hr>
+ 
 </div>
-<br /><br />
+<br />
 
-
+<div class="col-8 offset-1 mb-3 ml-2 mr-2 mt-2">
+  <p><b>All reviews:</b></p>
+  <div class="row ">
+    <% for(review of listing.reviews) {%>
+    <div class="card col-5 mb-3 ms-3 review-card">
+      <div class="card-body">
+        <h5 class="card-title">Fatima</h5>
+        <p class="card-text"><%= review.comment %></p>
+        <p class="card-text"><%= review.rating %> stars</p>
+        <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"  method="post" class="mb-3">
+          <button class="btn btn-sm btn-dark">Delete Review</button>
+        </form>
+      </div>
+    </div>
+    <%} %>
+  </div>
+</div>
