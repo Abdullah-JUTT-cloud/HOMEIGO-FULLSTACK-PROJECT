@@ -1,20 +1,20 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const Listing = require("./models/listing.js");
+
 const path = require("path");
 const ejsMate = require("ejs-mate");
-const Review = require("./models/review.js");
+
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/homeigo";
 const methodOverride = require("method-override");
 
-const wrapAsync=require("./utils/wrapAsync.js");
+
 const ExpressError=require("./utils/ExpressError.js");
 
-const {listingSchema,reviewSchema}=require("./schema.js");
 
 const listings=require("./routes/listing.js");
+const reviews=require("./routes/review.js");
 
 main()
   .then(() => {
@@ -35,58 +35,10 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
 
-
-
-
-const validateReview = (req, res, next) => {
-    let  {error} = reviewSchema.validate(req.body);
-    if (error) {
-        throw new ExpressError(400, error.details.map(el => el.message).join(', '));
-    } else {
-        next();
-    }
-};
-
-
-
-
-
 app.use("/listings",listings);
 
+app.use("/listings/:id/reviews",reviews);
 
-//revirews post
-app.post("/listings/:id/reviews",validateReview,wrapAsync(async(req,res)=>{
-  let listing=await Listing.findById(req.params.id);
-  let newReview=new Review(req.body.review);
-
-  listing.reviews.push(newReview);
-
-  await newReview.save();
-  await listing.save();
-  res.redirect(`/listings/${listing._id}`);
-
-
-}));
-
-app.delete("/listings/:id/reviews/:reviewId",wrapAsync(async(req,res)=>{
-  let {id,reviewId}=req.params;
-  await Listing.findByIdAndUpdate(id,{$pull:{reviews:reviewId}});
-  await Review.findByIdAndDelete(reviewId);
-  res.redirect(`/listings/${id}`);
-}))
-
-// app.get("/testlisting",async(req,res)=>{
-// let sampleTesting=new Listing({
-//     title:"My new Villa",
-//     description:"blbllblb",
-//     price:12000,
-//     location:"lahore",
-//     country:"haha"
-// });
-// await sampleTesting.save();
-// console.log("sample saved");
-// res.send("sucess!!");
-// })
 
 app.get("/", (req, res) => {
   res.send("ROOT HERE!");
@@ -101,7 +53,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
     let{statusCode=500,message="Something went hell bad!!"}=err;
     res.status(statusCode).render("./listings/error.ejs",{err});
-//   res.status(statusCode).send(message);
+
 });
 
 app.listen(4040, () => {
