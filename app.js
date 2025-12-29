@@ -13,8 +13,9 @@ const methodOverride = require("method-override");
 const ExpressError=require("./utils/ExpressError.js");
 
 
-const listings=require("./routes/listing.js");
-const reviews=require("./routes/review.js");
+const listingRouter=require("./routes/listing.js");
+const reviewRouter=require("./routes/review.js");
+const userRouter=require("./routes/user.js");
 
 const session=require("express-session");
 const flash=require("connect-flash");
@@ -69,14 +70,14 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-app.get("/demouser",async(req,res)=>{
-  let fakeUser=new User({
-    email:"demo@abc.com",
-    username:"demo1",
-  });
-  let registeredUser=await User.register(fakeUser,"password");
-  res.send(registeredUser);
-})
+// app.get("/demouser",async(req,res)=>{
+//   let fakeUser=new User({
+//     email:"demo@abc.com",
+//     username:"demo1",
+//   });
+//   let registeredUser=await User.register(fakeUser,"password");
+//   res.send(registeredUser);
+// })
 
 app.use((req,res,next)=>{
   res.locals.success=req.flash("success");
@@ -84,9 +85,9 @@ app.use((req,res,next)=>{
   next();
 })
 
-app.use("/listings",listings);
-
-app.use("/listings/:id/reviews",reviews);
+app.use("/listings",listingRouter);
+app.use("/listings/:id/reviews",reviewRouter);
+app.use("/",userRouter);
 
 
 
