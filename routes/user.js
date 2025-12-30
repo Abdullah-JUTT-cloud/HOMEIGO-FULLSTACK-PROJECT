@@ -13,20 +13,23 @@ const {
 
 
 // Signup Routes
-router.get("/signup", renderSignupForm);
-router.post("/signup", wrapAsync(signup));
+router
+    .route("/signup")
+    .get(renderSignupForm)
+    .post(wrapAsync(signup));
 
 // Login Routes
-router.get("/login", renderLoginForm);
-router.post(
-    "/login",
-    saveRedirectUrl,
-    passport.authenticate("local", {
-        failureRedirect: "/login",
-        failureFlash: true,
-    }),
-    login
-);
+router
+    .route("/login")
+    .get(renderLoginForm)
+    .post(
+        saveRedirectUrl,
+        passport.authenticate("local", {
+            failureRedirect: "/login",
+            failureFlash: true,
+        }),
+        login
+    );
 
 // Logout Route
 router.get("/logout", logout);
