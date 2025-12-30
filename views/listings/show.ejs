@@ -12,13 +12,18 @@
 
     <div class="card-body">
       <p class="card-text mt-3">
-        <%= listing.description %><br />
-        &#36;<%= listing.price.toLocaleString("en-PK") %><br />
-        <%= listing.location %><br />
-        <%= listing.country %>
+        <p>Owned by <i><u><%= listing.owner.username %></i></u></p>
+        <p><%= listing.description %></p>
+        <p>&#36;<%= listing.price.toLocaleString("en-PK") %></p>
+        <p> <%= listing.location %></p>
+       <p><%= listing.country %></p>
+
       </p>
 
+
       <div class="show-actions">
+      
+
         <a
           href="/listings/<%= listing._id %>/edit"
           class="btn btn-outline-dark"
@@ -32,12 +37,14 @@
         >
           <button class="btn btn-danger">Delete</button>
         </form>
+      
       </div>
     </div>
     <br>
     <hr>
   </div>
   
+
 </main>
 <div class="col-8 offset-2 mb-3">
   <h3 class="mb-3">Leave a rating:</h3>
@@ -72,7 +79,7 @@
   </form>
    <br />
   <hr>
- 
+
 </div>
 <br />
 
