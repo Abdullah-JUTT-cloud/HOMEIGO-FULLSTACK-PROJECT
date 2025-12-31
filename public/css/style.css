@@ -101,6 +101,106 @@ body {
    width: 60%;
 }
 
+/* Navbar Search */
+.search-container {
+   /* Mobile default */
+   width: 100%;
+   margin: 1rem 0;
+}
+
+@media (min-width: 768px) {
+   .search-container {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      width: auto;
+      min-width: 350px;
+   }
+}
+
+.d-flex[role="search"] {
+   position: relative;
+   width: 100%;
+}
+
+.search-input {
+   border-radius: 2rem !important;
+   padding: 0.75rem 3rem 0.75rem 1.5rem !important;
+   /* Right padding for button */
+   border: 1px solid var(--border-color) !important;
+   box-shadow: var(--shadow-sm);
+   font-size: 0.95rem;
+   width: 100%;
+}
+
+.search-input:focus {
+   box-shadow: var(--shadow-md);
+   border-color: var(--primary-color) !important;
+   outline: none;
+}
+
+.search-btn {
+   background-color: var(--primary-color) !important;
+   color: white !important;
+   border-radius: 50% !important;
+   padding: 0;
+   width: 2rem;
+   height: 2rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   /* Position absolute inside relative form */
+   position: absolute;
+   right: 5px;
+   top: 50%;
+   transform: translateY(-50%);
+   margin: 0;
+   z-index: 10;
+   border: none;
+}
+
+.search-btn:hover {
+   background-color: var(--primary-hover) !important;
+   transform: translateY(-50%) scale(1.05) !important;
+   /* Maintain vertical center on scale */
+}
+
+.search-btn i {
+   font-size: 0.85rem;
+   color: white !important;
+}
+
+/* Navbar Auth Buttons */
+.nav-btn {
+   border-radius: 1.5rem !important;
+   padding: 0.5rem 1.25rem !important;
+   font-weight: 600;
+   transition: var(--transition);
+   margin: 0 0.25rem;
+   white-space: nowrap;
+}
+
+.nav-btn:hover {
+   background-color: #f7f7f7;
+   transform: translateY(-1px);
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+   color: var(--text-dark) !important;
+}
+
+/* Remove underline hover from buttons specifically if inherited */
+.nav-btn::after {
+   display: none;
+}
+
+/* Specific button styles if needed */
+.btn-signup {
+   /* Optional: Make signup stand out more if requested, but user just said "as buttons" */
+   /* border: 1px solid var(--border-color); */
+}
+
 /* ========================================
    CARDS & LISTINGS
    ======================================== */
@@ -639,5 +739,7 @@ html {
    animation: fadeIn 0.5s ease-out;
 }
 
-#map {height: 500px;
-width: 80vh;}
+#map {
+   height: 400px;
+   width: 100%;
+}

@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV != "production") {
-  require('dotenv').config();
+  require("dotenv").config();
 }
 
 const express = require("express");
@@ -53,9 +53,9 @@ const sessionOptions = {
     httpOnly: true,
   },
 };
-app.get("/", (req, res) => {
-  res.send("ROOT HERE!");
-});
+// app.get("/", (req, res) => {
+//   res.send("ROOT HERE!");
+// });
 app.use(session(sessionOptions));
 app.use(flash());
 
