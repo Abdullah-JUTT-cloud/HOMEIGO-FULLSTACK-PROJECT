@@ -1,7 +1,13 @@
 const Listing = require("../models/listing.js");
 
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find();
+  const { q } = req.query;
+  let allListings;
+  if (q) {
+    allListings = await Listing.find({ country: { $regex: q, $options: "i" } });
+  } else {
+    allListings = await Listing.find();
+  }
   res.render("./listings/index.ejs", { allListings });
 }
 
