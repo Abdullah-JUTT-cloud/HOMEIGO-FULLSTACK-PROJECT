@@ -78,29 +78,54 @@
 
   </div>
   <br />
+  <%if(listing.reviews.length>0){%>
+    <div class="col-8 offset-1 mb-3 ml-2 mr-2 mt-2">
+      <p><b>All reviews:</b></p>
+      <div class="row ">
+        <% for(review of listing.reviews) {%>
+          <div class="card col-5 mb-3 ms-3 review-card">
+            <div class="card-body">
+              <h5 class="card-title">@<%= review.author.username %>
+              </h5>
+              <p class="starability-result" data-rating="<%= review.rating %>">
+                Rated: <%= review.rating %> stars
+              </p>
+              <p class="card-text">
+                <%= review.comment %>
+              </p>
 
-  <div class="col-8 offset-1 mb-3 ml-2 mr-2 mt-2">
-    <p><b>All reviews:</b></p>
-    <div class="row ">
-      <% for(review of listing.reviews) {%>
-        <div class="card col-5 mb-3 ms-3 review-card">
-          <div class="card-body">
-            <h5 class="card-title">@<%= review.author.username %>
-            </h5>
-            <p class="starability-result" data-rating="<%= review.rating %>">
-              Rated: <%= review.rating %> stars
-            </p>
-            <p class="card-text">
-              <%= review.comment %>
-            </p>
 
-
-            <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="post"
-              class="mb-3">
-              <button class="btn btn-sm btn-dark">Delete Review</button>
-            </form>
+              <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="post"
+                class="mb-3">
+                <button class="btn btn-sm btn-dark">Delete Review</button>
+              </form>
+            </div>
           </div>
+          <%} %>
+      </div>
+      <%}%>
+        <div class="col-6 offset-3 mb-3">
+          <h3>Where you'll be</h3>
+          <div id="map"></div>
         </div>
-        <%} %>
     </div>
-  </div>
+
+    <script>
+      function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: 59.3326, lng: 18.0649 },
+          zoom: 7,
+          mapTypeId: "roadmap"
+        });
+
+        // Example: add a marker
+        const marker = new google.maps.Marker({
+          position: { lat: 59.3326, lng: 18.0649 },
+          map: map,
+          title: "Center Point"
+        });
+      }
+    </script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAP_KEY %>&callback=initMap" async
+      defer></script>
+   

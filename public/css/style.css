@@ -638,3 +638,6 @@ html {
 .review-card {
    animation: fadeIn 0.5s ease-out;
 }
+
+#map {height: 500px;
+width: 80vh;}

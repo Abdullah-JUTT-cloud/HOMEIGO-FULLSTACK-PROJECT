@@ -5,6 +5,7 @@
     method="post"
     novalidate
     class="needs-validation"
+    enctype="multipart/form-data"
   >
     <div class="row">
       <div class="col-8 offset-2 mt-3">
@@ -32,14 +33,18 @@
           <div class="invalid-feedback">Descripton is not valid!</div>
         </div>
         <div class="mb-3">
-          <label for="image" class="form-label">Enter URL/Link:</label>
+          <h3>Current Image</h3>
+          <img src="<%= originalImageUrl %>" alt="" />
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Upload new Image:</label>
           <input
-            type="text"
+            type="file"
             class="form-control"
             name="listing[image][url]"
-            value="<%= listing && listing.image ? listing.image.url : '' %>"
+           
           />
-          <div class="invalid-feedback">Image url is not valid!</div>
+         
         </div>
 
         <div class="row">
